@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:29191",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "LocatorPoc.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "LOCATORDBSERVER": "debug-locator-server",
+        "LOCATORDBUSER": "debug-locator-user",
+        "LOCATORDBPWD": "debug-locator-password"
+      },
+      "applicationUrl": "http://localhost:20002",
+      "dotnetRunMessages": true
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "LOCATORDBSERVER": "debug-locator-server",
+        "LOCATORDBUSER": "debug-locator-user",
+        "LOCATORDBPWD": "debug-locator-password"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "environmentVariables": {
+        "LOCATORDBSERVER": "debug-locator-server",
+        "LOCATORDBUSER": "debug-locator-user",
+        "LOCATORDBPWD": "debug-locator-password"
+      }
+    }
+  }
+}

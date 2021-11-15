@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:29191",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "RatesPoc.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "RATESDBSERVER": "debug-rates-server",
+        "RATESDBUSER": "debug-rates-user",
+        "RATESDBPWD": "debug-rates-password",
+        "LOCATOR_HOST": "localhost",
+        "LOCATOR_PORT": "20002"
+      },
+      "applicationUrl": "http://localhost:20002",
+      "dotnetRunMessages": true
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "RATESDBSERVER": "debug-rates-server",
+        "RATESDBUSER": "debug-rates-user",
+        "RATESDBPWD": "debug-rates-password",
+        "LOCATOR_HOST": "localhost",
+        "LOCATOR_PORT": "20002"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "environmentVariables": {
+        "RATESDBSERVER": "debug-rates-server",
+        "RATESDBUSER": "debug-rates-user",
+        "RATESDBPWD": "debug-rates-password"
+      }
+    }
+  }
+}
