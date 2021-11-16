@@ -18,8 +18,8 @@
         "RATESDBSERVER": "debug-rates-server",
         "RATESDBUSER": "debug-rates-user",
         "RATESDBPWD": "debug-rates-password",
-        "LOCATOR_POC_SERVICE_HOST": "localhost",
-        "LOCATOR_POC_SERVICE_PORT": "20002"
+        "LOCATOR_POC_APP_SERVICE_HOST": "localhost",
+        "LOCATOR_POC_APP_SERVICE_PORT": "20002"
       },
       "applicationUrl": "http://localhost:20002",
       "dotnetRunMessages": true
@@ -33,8 +33,8 @@
         "RATESDBSERVER": "debug-rates-server",
         "RATESDBUSER": "debug-rates-user",
         "RATESDBPWD": "debug-rates-password",
-        "LOCATOR_POC_SERVICE_HOST": "localhost",
-        "LOCATOR_POC_SERVICE_PORT": "20002"
+        "LOCATOR_POC_APP_SERVICE_HOST": "localhost",
+        "LOCATOR_POC_APP_SERVICE_PORT": "20002"
       }
     },
     "Docker": {
