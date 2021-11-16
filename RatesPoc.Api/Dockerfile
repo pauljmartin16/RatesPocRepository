@@ -18,5 +18,5 @@ RUN dotnet publish "RatesPoc.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY --from=build/rates-startup.sh ./rates-startup.sh
+COPY --from=build /app/build ./rates-startup.sh
 ENTRYPOINT ["/rates-startup.sh"]
