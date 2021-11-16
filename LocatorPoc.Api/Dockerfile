@@ -17,6 +17,6 @@ RUN dotnet publish "LocatorPoc.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY locator-startup.sh app/locator-startup.sh
-COPY --from=build /app/build ./locator-startup.sh
-ENTRYPOINT ["/locator-startup.sh"]
+COPY --from=publish /app/publish .
+#ENTRYPOINT ["/locator-startup.sh"]
+ENTRYPOINT ["dotnet", "LocatorPoc.Api.dll"]
