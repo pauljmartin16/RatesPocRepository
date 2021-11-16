@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Surface Vault mount as environment variables
 secretFile="/vault/secrets/secret.env"
