@@ -13,8 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var locatorHost = Environment.GetEnvironmentVariable("LOCATOR_HOST");
-var locatorPort = Environment.GetEnvironmentVariable("LOCATOR_PORT");
+var locatorHost = Environment.GetEnvironmentVariable("LOCATOR_POC_SERVICE_HOST");
+var locatorPort = Environment.GetEnvironmentVariable("LOCATOR_POC_SERVICE_PORT");
 var locatorUri = $"http://{locatorHost}:{locatorPort}";
 
 builder.Services.AddHttpClient<IRatesBusinessService, RatesBusinessService>(c =>
