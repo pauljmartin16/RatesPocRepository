@@ -50,7 +50,7 @@ spec:
       labels:
         app: locator-poc-selector
     spec:
-      serviceAccountName: rdc-poc-svc
+      serviceAccountName: rdc-poc-locator-svc
       containers:
       - name: locator-poc-app
         image: jweissig/app:0.0.1
@@ -58,6 +58,6 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: rdc-poc-svc
+  name: rdc-poc-locator-svc
   labels:
     app: locator-poc-selector
