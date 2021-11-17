@@ -25,24 +25,21 @@ spec:
         vault.hashicorp.com/role: rdc-poc-role
 
         # Mount the secret as file /vault/secrets/secret.env
-        vault.hashicorp.com/agent-inject-secret-secret.env: "rdc-poc/kv/dev/appsecret"
+        vault.hashicorp.com/agent-inject-secret-secret.env: "rdc-poc-app/kv/dev/appsecret"
 
         # Use Go template to generate the secret file content
         vault.hashicorp.com/agent-inject-template-secret.env: |
-          {{- with secret "rdc-poc/kv/dev/appsecret" -}}
+          {{- with secret "rdc-poc-app/kv/dev/appsecret" -}}
           RATESDBSERVER="{{ .Data.data.RATESDBSERVER }}"
           RATESDBUSER="{{ .Data.data.RATESDBUSER }}"
           RATESDBPWD="{{ .Data.data.RATESDBPWD }}"
-          LOCATOR_POC_SERVICE_HOST="{{ .Data.data.LOCATOR_POC_SERVICE_HOST }}"
-          LOCATOR_POC_SERVICE_PWD="{{ .Data.data.LOCATOR_POC_SERVICE_PWD }}"
           {{- end }}
 
-        vault.hashicorp.com/agent-inject-secret-filesecret: "rdc-poc/kv/dev/filesecret"
-
+        vault.hashicorp.com/agent-inject-secret-filesecret: "rdc-poc-app/kv/dev/filesecret"
         # Load a file-based secret by decoding base64 encoded value
         # Load a file-based secret by decoding base64 encoded value
         vault.hashicorp.com/agent-inject-template-filesecret: |
-          {{- with secret "rdc-poc/kv/dev/filesecret" -}}
+          {{- with secret "rdc-poc-app/kv/dev/filesecret" -}}
           {{ base64Decode .Data.data.content }}
           {{- end -}}
 
@@ -52,14 +49,26 @@ spec:
       labels:
         app: rates-poc-selector
     spec:
-      serviceAccountName: rdc-poc-rates-svc
+      serviceAccountName: rdc-poc-svc
       containers:
       - name: rates-poc-app
-        image: jweissig/app:0.0.1
+        image: pauljmartin16/ratespocapi:latest
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: rdc-poc-rates-svc
+  name: rdc-poc-svc
   labels:
+    app: poc-svc-selector
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rates-poc-app
+spec:
+  selector:
     app: rates-poc-selector
+  ports:
+  - port: 82
+    protocol: TCP
+    targetPort: 80

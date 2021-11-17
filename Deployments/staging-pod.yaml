@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: locator-poc-app
-  labels:
-    app: locator-poc-selector
+  name: staging-pod
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: locator-poc-selector
-  replicas: 1
+      app: staging-pod
   template:
     metadata:
+      labels:
+        app: staging-pod
       annotations:
         # See Vault Agent injector annotations: https://www.vaultproject.io/docs/platform/k8s/injector/annotations
 
@@ -46,29 +46,22 @@ spec:
         # Override default volume path
 
         # vault.hashicorp.com/secret-volume-path-filesecret: /custom/path
-      labels:
-        app: locator-poc-selector
     spec:
       serviceAccountName: rdc-poc-svc
       containers:
-      - name: locator-poc-app
-        image: pauljmartin16/locatorpocapi:latest
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: rdc-poc-svc
-  labels:
-    app: poc-svc-selector
+      - name: staging-pod
+        image: gcr.io/google-samples/hello-app:1.0
+        ports:
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: locator-poc-app
+  name: staging-pod
 spec:
   selector:
-    app: locator-poc-selector
+    app: staging-pod
   ports:
-  - port: 80
+  - port: 81
     protocol: TCP
-    targetPort: 80
+    targetPort: 8080
